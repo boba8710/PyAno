@@ -185,7 +185,7 @@ def asyncPlayChord(noteArray, inTime):
 	thr =threading.Thread(target = playChord, args=(noteArray,inTime), kwargs = {})
 	thr.start()
 def asyncRunPhrase(inPhrase):
-	thr = threading.Tread(target = inPhrase, args = (), kwargs = {})
+	thr = threading.Thread(target = inPhrase, args = (), kwargs = {})
 	thr.start()
 intervals = []
 tones = {}
@@ -237,11 +237,12 @@ as an asynchronous thread. You can get very complex melody this way.
 '''
 
 #YOUR MUSIC GOES HERE  :)
-
+'''
 #Toccata and Fugue in D minor
 #J.S.B.
 #Arr for script by Zaine Wilson
 setTempo(4.80)
+
 playNote("A4",32)
 playNote("G4",32)
 playNote("A4",4)
@@ -297,3 +298,64 @@ playChord(["D3","E3","A3","D4"],8)
 asyncPlayChord(["D4","Gb4","A4","D5"],2)
 playChord(["D3","Gb3","A3","D4"],2)
 
+'''
+def asyncPhrase1():
+	playNote("A3",32)
+	playNote("G3",32)
+	playNote("A3",4)
+	playNote("D3",3)
+	playNote("E3",8)
+	playNote("F3",8)
+	playNote("A3",8)
+	playNote("A3",8)
+	playNote("G3",8)
+	playNote("E3",2)
+asyncRunPhrase(asyncPhrase1)
+playNote("A4",32)
+playNote("G4",32)
+playNote("A4",4)
+playNote("D4",3)
+playNote("E4",8)
+playNote("F4",8)
+playNote("A4",8)
+playNote("A4",8)
+playNote("G4",8)
+playNote("E4",2)
+
+rest(4)
+playNote("A4",32)
+playNote("G4",32)
+playNote("A4",4)
+playNote("D4",3)
+playNote("E4",8)
+playNote("F4",8)
+playNote("A4",8)
+playNote("C5",8)
+playNote("Bb4",8)
+playNote("G4",8)
+playNote("C5",8)
+playNote("A4",2)
+rest(4)
+playNote("A4",32)
+playNote("G4",32)
+playNote("A4",4)
+asyncPlayChord(["D3","F3","A3"],4)
+playNote("D4",4)
+asyncPlayChord(["D3","G3","B3"],4)
+playNote("E4",2)
+playNote("A4",32)
+playNote("G4",32)
+asyncPlayChord(["A3","C4","E4"],4)
+playNote("A4",4)
+asyncPlayChord(["D3","G3","B3"],4)
+playNote("E4",4)
+asyncPlayChord(["F3","A3","C3"],4)
+playNote("F4",4)
+rest(4)
+playNote("A4",32)
+playNote("G4",32)
+asyncPlayChord(["A3","C4","E4"],2)
+rest(8)
+playNote("A4",8)
+asyncPlayChord(["Bb3","D4", "F4"],4)
+playNote("Bb4",4)
