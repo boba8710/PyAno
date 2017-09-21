@@ -223,6 +223,14 @@ use the rest(float length) command to rest for length beats
 The tempo is presented in seconds per measure and is default 2.40. You can 
 
 change that with the setTempo(float Tempo) command.
+
+Another neat thing you can do is set up entire asynchronous phrases
+
+but that will require some thinking and elbow grease.
+
+Effecively, just define a method with a bunch of fun instructions in it and spin it up
+
+as an asynchronous thread. You can get very complex melody this way.
 '''
 
 #YOUR MUSIC GOES HERE  :)
@@ -262,11 +270,27 @@ playNote("D4",32)
 playNote("Db4",8)
 playNote("D4",4)
 rest(8)
+asyncPlayNote("D4",4)
 playNote("D3",4)
+
+asyncPlayChord(["D4","F4","A4"],16)
 playChord(["D3","F3"],16)
+
+asyncPlayChord(["D4","F4"],16)
 playChord(["D3","F3","A3"],16)
+
+asyncPlayChord(["D4","F4","A4","D5"],16)
 playChord(["D3","F3","A3","D4"],16)
+
+asyncPlayChord(["D4","F4","A4","Db5"],2)
 playChord(["D3","F3","A3","Db4"],2)
+
+asyncPlayChord(["D4","G4","A4","D5"],8)
 playChord(["D3","G3","A3","D4"],8)
+
+asyncPlayChord(["D4","E4","A4","D5"],8)
 playChord(["D3","E3","A3","D4"],8)
+
+asyncPlayChord(["D4","Gb4","A4","D5"],2)
 playChord(["D3","Gb3","A3","D4"],2)
+
