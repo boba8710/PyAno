@@ -177,15 +177,11 @@ def playMajorScale(root, inTime):
 		noteArray.append(i)
 	for n in range(0,len(noteArray)):
 		playNote(noteArray[n], inTime)
-def asyncPlayNote(note, inTime):
-	thr =threading.Thread(target = playNote, args=(note,inTime), kwargs = {})
-	thr.start()
-		
-def asyncPlayChord(noteArray, inTime):
-	thr =threading.Thread(target = playChord, args=(noteArray,inTime), kwargs = {})
-	thr.start()
-def asyncRunPhrase(inPhrase):
+def asynchRunPhrase(inPhrase):
 	thr = threading.Thread(target = inPhrase, args = (), kwargs = {})
+	thr.start()
+def asynch(inCommand,args0,args1):
+	thr = threading.Thread(target = inCommand, args=(args0,args1),kwargs={})
 	thr.start()
 intervals = []
 tones = {}
@@ -237,7 +233,7 @@ as an asynchronous thread. You can get very complex melody this way.
 '''
 
 #YOUR MUSIC GOES HERE  :)
-'''
+
 #Toccata and Fugue in D minor
 #J.S.B.
 #Arr for script by Zaine Wilson
@@ -274,88 +270,27 @@ playNote("D4",32)
 playNote("Db4",8)
 playNote("D4",4)
 rest(8)
-asyncPlayNote("D4",4)
+asynch(playNote,"D4",4)
 playNote("D3",4)
 
-asyncPlayChord(["D4","F4","A4"],16)
+asynch(playChord,["D4","F4","A4"],16)
 playChord(["D3","F3"],16)
 
-asyncPlayChord(["D4","F4","A4"],16)
+asynch(playChord,["D4","F4","A4"],16)
 playChord(["D3","F3","A3"],16)
 
-asyncPlayChord(["D4","F4","A4","D5"],16)
+asynch(playChord,["D4","F4","A4","D5"],16)
 playChord(["D3","F3","A3","D4"],16)
 
-asyncPlayChord(["D4","F4","A4","Db5"],2)
+asynch(playChord,["D4","F4","A4","Db5"],2)
 playChord(["D3","F3","A3","Db4"],2)
 
-asyncPlayChord(["D4","G4","A4","D5"],8)
+asynch(playChord,["D4","G4","A4","D5"],8)
 playChord(["D3","G3","A3","D4"],8)
 
-asyncPlayChord(["D4","E4","A4","D5"],8)
+asynch(playChord,["D4","E4","A4","D5"],8)
 playChord(["D3","E3","A3","D4"],8)
 
-asyncPlayChord(["D4","Gb4","A4","D5"],2)
+asynch(playChord,["D4","Gb4","A4","D5"],2)
 playChord(["D3","Gb3","A3","D4"],2)
 
-'''
-def asyncPhrase1():
-	playNote("A3",32)
-	playNote("G3",32)
-	playNote("A3",4)
-	playNote("D3",3)
-	playNote("E3",8)
-	playNote("F3",8)
-	playNote("A3",8)
-	playNote("A3",8)
-	playNote("G3",8)
-	playNote("E3",2)
-asyncRunPhrase(asyncPhrase1)
-playNote("A4",32)
-playNote("G4",32)
-playNote("A4",4)
-playNote("D4",3)
-playNote("E4",8)
-playNote("F4",8)
-playNote("A4",8)
-playNote("A4",8)
-playNote("G4",8)
-playNote("E4",2)
-
-rest(4)
-playNote("A4",32)
-playNote("G4",32)
-playNote("A4",4)
-playNote("D4",3)
-playNote("E4",8)
-playNote("F4",8)
-playNote("A4",8)
-playNote("C5",8)
-playNote("Bb4",8)
-playNote("G4",8)
-playNote("C5",8)
-playNote("A4",2)
-rest(4)
-playNote("A4",32)
-playNote("G4",32)
-playNote("A4",4)
-asyncPlayChord(["D3","F3","A3"],4)
-playNote("D4",4)
-asyncPlayChord(["D3","G3","B3"],4)
-playNote("E4",2)
-playNote("A4",32)
-playNote("G4",32)
-asyncPlayChord(["A3","C4","E4"],4)
-playNote("A4",4)
-asyncPlayChord(["D3","G3","B3"],4)
-playNote("E4",4)
-asyncPlayChord(["F3","A3","C3"],4)
-playNote("F4",4)
-rest(4)
-playNote("A4",32)
-playNote("G4",32)
-asyncPlayChord(["A3","C4","E4"],2)
-rest(8)
-playNote("A4",8)
-asyncPlayChord(["Bb3","D4", "F4"],4)
-playNote("Bb4",4)
